@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subway Surfer Admin</title>
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body>
+    <div id="authGate" class="auth-gate">
+      <div class="auth-card">
+        <p class="eyebrow">ADMIN-ZUGANG</p>
+        <h2>Nur autorisierte Nutzer</h2>
+        <p>Bitte gib das Passwort ein, um die Admin-Tools zu sehen.</p>
+        <input id="adminPassword" type="password" placeholder="Passwort" />
+        <button id="adminLoginBtn" class="btn primary">Anmelden</button>
+        <p id="authMessage" class="auth-message"></p>
+      </div>
+    </div>
+
+    <div id="adminContent" class="page-shell" hidden>
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">ADMIN-CONSOLE</p>
+          <h1>Subway Surfer Builder</h1>
+          <p class="subtitle">Baue das Spiel direkt weiter, sende Befehle und passe die Laufwelt an.</p>
+        </div>
+        <div class="topbar-actions">
+          <a href="index.html" class="btn ghost">Startseite</a>
+          <a href="game.html" class="btn primary">Zum Spiel</a>
+          <button id="logoutBtn" class="btn action">Abmelden</button>
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Befehle senden</h2>
+            <span id="statusBadge" class="status-badge">Bereit</span>
+          </div>
+
+          <form id="commandForm" class="command-form">
+            <label>
+              Befehl
+              <input id="commandInput" type="text" placeholder="z. B. spawn obstacle" />
+            </label>
+            <button type="submit" class="btn primary">Ausführen</button>
+          </form>
+
+          <div class="quick-actions">
+            <button data-command="spawn obstacle" class="btn action">Hindernis spawnen</button>
+            <button data-command="spawn coin" class="btn action">Münze spawnen</button>
+            <button data-command="spawn shield" class="btn action">Shield geben</button>
+            <button data-command="spawn boost" class="btn action">Boost geben</button>
+            <button data-command="set speed 11" class="btn action">Speed +</button>
+            <button data-command="add score 500" class="btn action">+500 Punkte</button>
+            <button data-command="reset" class="btn action">Reset</button>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Spiel-Einstellungen</h2>
+          </div>
+
+          <label class="slider-row">
+            <span>Geschwindigkeit</span>
+            <input id="speedSlider" type="range" min="5" max="20" value="8" />
+            <strong id="speedValue">8</strong>
+          </label>
+
+          <label class="slider-row">
+            <span>Schwierigkeit</span>
+            <input id="difficultySlider" type="range" min="1" max="5" value="1" />
+            <strong id="difficultyValue">1</strong>
+          </label>
+
+          <label class="slider-row">
+            <span>Lane</span>
+            <input id="laneSlider" type="range" min="0" max="2" value="1" />
+            <strong id="laneValue">Mitte</strong>
+          </label>
+
+          <div class="builder-actions">
+            <button id="applySettingsBtn" class="btn primary">Einstellungen anwenden</button>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Nachricht senden</h2>
+          </div>
+          <form id="messageForm" class="message-form">
+            <label>
+              Nachricht an die Website
+              <input id="messageInput" type="text" placeholder="z. B. Neues Update online!" />
+            </label>
+            <button type="submit" class="btn primary">Senden</button>
+          </form>
+          <div class="message-preview">
+            <h3>Aktuelle Nachricht</h3>
+            <p id="currentMessageText">Keine Nachricht gesendet.</p>
+          </div>
+        </section>
+
+        <section class="panel full-width">
+          <div class="panel-header">
+            <h2>Letzte Befehle</h2>
+          </div>
+          <ul id="commandLog" class="command-log"></ul>
+        </section>
+      </main>
+    </div>
+
+    <script src="admin.js"></script>
+  </body>
+</html>
